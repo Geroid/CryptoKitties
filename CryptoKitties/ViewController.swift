@@ -6,14 +6,37 @@
 //
 
 import UIKit
+import SnapKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+
+    private let welcomeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Hello, world!"
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupView()
+        setupConstraints()
     }
 
+}
+
+private extension ViewController {
+
+    func setupView() {
+        view.backgroundColor = .white
+        view.addSubview(welcomeLabel)
+    }
+
+    func setupConstraints() {
+        welcomeLabel.snp.makeConstraints { make in
+            make.centerY.centerX.equalToSuperview()
+        }
+    }
 
 }
 
